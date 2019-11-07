@@ -1,0 +1,546 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Flowchart" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="714,696" sap2010:WorkflowViewState.IdRef="Flowchart_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="22">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.Excel</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="21">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Flowchart DisplayName="Flowchart" sap:VirtualizedContainerService.HintSize="694,636" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart.Variables>
+      <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="NewMail" />
+    </Flowchart.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+        <av:Size x:Key="ShapeSize">60,75</av:Size>
+        <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,117.5</av:PointCollection>
+        <x:Double x:Key="Width">660</x:Double>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Flowchart.StartNode>
+      <x:Reference>__ReferenceID1</x:Reference>
+    </Flowchart.StartNode>
+    <FlowStep x:Name="__ReferenceID0">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <av:Point x:Key="ShapeLocation">360,427</av:Point>
+          <av:Size x:Key="ShapeSize">200,68</av:Size>
+          <av:PointCollection x:Key="ConnectorLocation">360,460 170,460 170,150.5 200,150.5</av:PointCollection>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <Sequence DisplayName="checkTravelRequest" sap:VirtualizedContainerService.HintSize="1447,4055" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+        <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1405,3963" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[NewMail]">
+          <ui:ForEach.Body>
+            <ActivityAction x:TypeArguments="snm:MailMessage">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="snm:MailMessage" Name="mail" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1369,3828" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <If Condition="[mail.Subject.Contains(&quot;Travel Request&quot;) And mail.Sender.Address.Contains(&quot;gizasystems&quot;)]" sap:VirtualizedContainerService.HintSize="1327,3736" sap2010:WorkflowViewState.IdRef="If_2">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <If.Then>
+                    <Sequence sap:VirtualizedContainerService.HintSize="1182,3586" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:String" Name="EmployeeName" />
+                        <Variable x:TypeArguments="x:String" Name="subPath" />
+                        <Variable x:TypeArguments="s:String[]" Name="arraypath" />
+                        <Variable x:TypeArguments="x:Int32" Name="index" />
+                      </Sequence.Variables>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="1140,59" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[mail.Subject]" />
+                      <Assign sap:VirtualizedContainerService.HintSize="1140,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[EmployeeName]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">[mail.Sender.DisplayName.ToString]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <If Condition="[mail.Attachments.Any]" sap:VirtualizedContainerService.HintSize="1140,720" sap2010:WorkflowViewState.IdRef="If_3">
+                        <If.Else>
+                          <Sequence sap:VirtualizedContainerService.HintSize="478,570" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="436,59" sap2010:WorkflowViewState.IdRef="MessageBox_6" Text="[&quot;email Empty&quot;]" />
+                            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="436,317" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+                              <ui:CommentOut.Body>
+                                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,239" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" TimeoutMS="{x:Null}" Body="please attach the travel request template and send again in a new email with subject Travel Request" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,147" sap2010:WorkflowViewState.IdRef="SendOutlookMail_2" IsBodyHtml="False" IsDraft="False" Subject="No Template" To="[mail.Sender.Address.ToString]">
+                                    <ui:SendOutlookMail.Files>
+                                      <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+                                    </ui:SendOutlookMail.Files>
+                                  </ui:SendOutlookMail>
+                                </Sequence>
+                              </ui:CommentOut.Body>
+                            </ui:CommentOut>
+                            <ui:Continue sap:VirtualizedContainerService.HintSize="436,22" sap2010:WorkflowViewState.IdRef="Continue_1" />
+                          </Sequence>
+                        </If.Else>
+                      </If>
+                      <ui:SaveMailAttachments Attachments="{x:Null}" DisplayName="Save Attachments" FolderPath="[&quot;Data/Docs/TravelRequests/&quot;+EmployeeName]" sap:VirtualizedContainerService.HintSize="1140,87" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_1" Message="[mail]" />
+                      <Assign sap:VirtualizedContainerService.HintSize="1140,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[subPath]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">["Data/Docs/TravelRequests/"+EmployeeName]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign sap:VirtualizedContainerService.HintSize="1140,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="s:String[]">[arraypath]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="s:String[]">[Directory.GetFiles(subPath)]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <Assign sap:VirtualizedContainerService.HintSize="1140,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Int32">[index]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="1140,2108" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[arraypath]">
+                        <ui:ForEach.Body>
+                          <ActivityAction x:TypeArguments="x:String">
+                            <ActivityAction.Argument>
+                              <DelegateInArgument x:TypeArguments="x:String" Name="item" />
+                            </ActivityAction.Argument>
+                            <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1104,1973" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <If Condition="[item.Contains(&quot;AM&quot;) or item.Contains(&quot;PM&quot;)]" sap:VirtualizedContainerService.HintSize="1062,1781" sap2010:WorkflowViewState.IdRef="If_1">
+                                <If.Else>
+                                  <Sequence DisplayName="ReadTemplate" sap:VirtualizedContainerService.HintSize="917,1631" sap2010:WorkflowViewState.IdRef="Sequence_1">
+                                    <Sequence.Variables>
+                                      <Variable x:TypeArguments="x:String" Name="curRequestPath" />
+                                      <Variable x:TypeArguments="ui:GenericValue" Name="ID" />
+                                      <Variable x:TypeArguments="ui:GenericValue" Name="Name" />
+                                      <Variable x:TypeArguments="ui:GenericValue" Name="title" />
+                                      <Variable x:TypeArguments="ui:GenericValue" Name="cityto" />
+                                      <Variable x:TypeArguments="ui:GenericValue" Name="cityfrom" />
+                                      <Variable x:TypeArguments="ui:GenericValue" Name="mail" />
+                                      <Variable x:TypeArguments="ui:GenericValue" Name="dayto" />
+                                      <Variable x:TypeArguments="ui:GenericValue" Name="dayfrom" />
+                                      <Variable x:TypeArguments="ui:GenericValue" Name="monthfrom" />
+                                      <Variable x:TypeArguments="ui:GenericValue" Name="yearfrom" />
+                                      <Variable x:TypeArguments="ui:GenericValue" Name="monthto" />
+                                      <Variable x:TypeArguments="ui:GenericValue" Name="yearto" />
+                                      <Variable x:TypeArguments="ui:GenericValue" Name="RequestID" />
+                                    </Sequence.Variables>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <Assign sap:VirtualizedContainerService.HintSize="875,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="ui:GenericValue">[RequestID]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="ui:GenericValue">[EmployeeName+" "+ DateTime.Now.ToString("dd.MM.yy HH;mm;ss tt")+".xlsm"]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                    <Assign sap:VirtualizedContainerService.HintSize="875,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:String">[curRequestPath]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:String">[subPath+"/"+RequestID]</InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                    <ui:MoveFile ContinueOnError="{x:Null}" Destination="[curRequestPath]" DisplayName="Move File" sap:VirtualizedContainerService.HintSize="875,160" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="True" Path="[arraypath(index)]" />
+                                    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="875,222" sap2010:WorkflowViewState.IdRef="CommentOut_7">
+                                      <ui:CommentOut.Body>
+                                        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,144" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <ui:ExcelApplicationScope DisplayName="Excel Application Scope" EditPassword="{x:Null}" ExistingWorkbook="{x:Null}" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" Password="{x:Null}" Visible="False" Workbook="{x:Null}" WorkbookPath="[curRequestPath]">
+                                            <ui:ExcelApplicationScope.Body>
+                                              <ActivityAction x:TypeArguments="ui:WorkbookApplication">
+                                                <ActivityAction.Argument>
+                                                  <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
+                                                </ActivityAction.Argument>
+                                                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,1240" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                  <ui:ExcelReadCell Cell="C7" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ExcelReadCell_1" SheetName="Request">
+                                                    <ui:ExcelReadCell.Result>
+                                                      <OutArgument x:TypeArguments="ui:GenericValue">[ID]</OutArgument>
+                                                    </ui:ExcelReadCell.Result>
+                                                  </ui:ExcelReadCell>
+                                                  <ui:ExcelReadCell Cell="G7" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ExcelReadCell_3" SheetName="Request">
+                                                    <ui:ExcelReadCell.Result>
+                                                      <OutArgument x:TypeArguments="ui:GenericValue">[Name]</OutArgument>
+                                                    </ui:ExcelReadCell.Result>
+                                                  </ui:ExcelReadCell>
+                                                  <ui:ExcelReadCell Cell="P7" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ExcelReadCell_4" SheetName="Request">
+                                                    <ui:ExcelReadCell.Result>
+                                                      <OutArgument x:TypeArguments="ui:GenericValue">[title]</OutArgument>
+                                                    </ui:ExcelReadCell.Result>
+                                                  </ui:ExcelReadCell>
+                                                  <ui:ExcelReadCell Cell="G8" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ExcelReadCell_5" SheetName="Request">
+                                                    <ui:ExcelReadCell.Result>
+                                                      <OutArgument x:TypeArguments="ui:GenericValue">[mail]</OutArgument>
+                                                    </ui:ExcelReadCell.Result>
+                                                  </ui:ExcelReadCell>
+                                                  <ui:ExcelReadCell Cell="B19" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ExcelReadCell_6" SheetName="Request">
+                                                    <ui:ExcelReadCell.Result>
+                                                      <OutArgument x:TypeArguments="ui:GenericValue">[dayfrom]</OutArgument>
+                                                    </ui:ExcelReadCell.Result>
+                                                  </ui:ExcelReadCell>
+                                                  <ui:ExcelReadCell Cell="C19" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ExcelReadCell_7" SheetName="Request">
+                                                    <ui:ExcelReadCell.Result>
+                                                      <OutArgument x:TypeArguments="ui:GenericValue">[monthfrom]</OutArgument>
+                                                    </ui:ExcelReadCell.Result>
+                                                  </ui:ExcelReadCell>
+                                                  <ui:ExcelReadCell Cell="D19" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ExcelReadCell_8" SheetName="Request">
+                                                    <ui:ExcelReadCell.Result>
+                                                      <OutArgument x:TypeArguments="ui:GenericValue">[yearfrom]</OutArgument>
+                                                    </ui:ExcelReadCell.Result>
+                                                  </ui:ExcelReadCell>
+                                                  <ui:ExcelReadCell Cell="E19" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ExcelReadCell_9" SheetName="Request">
+                                                    <ui:ExcelReadCell.Result>
+                                                      <OutArgument x:TypeArguments="ui:GenericValue">[dayto]</OutArgument>
+                                                    </ui:ExcelReadCell.Result>
+                                                  </ui:ExcelReadCell>
+                                                  <ui:ExcelReadCell Cell="F19" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ExcelReadCell_10" SheetName="Request">
+                                                    <ui:ExcelReadCell.Result>
+                                                      <OutArgument x:TypeArguments="ui:GenericValue">[monthto]</OutArgument>
+                                                    </ui:ExcelReadCell.Result>
+                                                  </ui:ExcelReadCell>
+                                                  <ui:ExcelReadCell Cell="G19" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ExcelReadCell_11" SheetName="Request">
+                                                    <ui:ExcelReadCell.Result>
+                                                      <OutArgument x:TypeArguments="ui:GenericValue">[yearto]</OutArgument>
+                                                    </ui:ExcelReadCell.Result>
+                                                  </ui:ExcelReadCell>
+                                                  <ui:ExcelReadCell Cell="I19" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ExcelReadCell_12" SheetName="Request">
+                                                    <ui:ExcelReadCell.Result>
+                                                      <OutArgument x:TypeArguments="ui:GenericValue">[cityfrom]</OutArgument>
+                                                    </ui:ExcelReadCell.Result>
+                                                  </ui:ExcelReadCell>
+                                                  <ui:ExcelReadCell Cell="N19" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ExcelReadCell_13" SheetName="Request">
+                                                    <ui:ExcelReadCell.Result>
+                                                      <OutArgument x:TypeArguments="ui:GenericValue">[cityto]</OutArgument>
+                                                    </ui:ExcelReadCell.Result>
+                                                  </ui:ExcelReadCell>
+                                                </Sequence>
+                                              </ActivityAction>
+                                            </ui:ExcelApplicationScope.Body>
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                          </ui:ExcelApplicationScope>
+                                        </Sequence>
+                                      </ui:CommentOut.Body>
+                                    </ui:CommentOut>
+                                    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="875,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" Timeout="{x:Null}" UnSafe="False" WorkflowFileName="System1\GetRequiredCellsFromTemplate.xaml">
+                                      <ui:InvokeWorkflowFile.Arguments>
+                                        <InArgument x:TypeArguments="x:String" x:Key="curRequestPath">
+                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="curRequestPath">
+                                            <mva:VisualBasicValue.Result>
+                                              <OutArgument x:TypeArguments="x:String" />
+                                            </mva:VisualBasicValue.Result>
+                                          </mva:VisualBasicValue>
+                                        </InArgument>
+                                        <OutArgument x:TypeArguments="ui:GenericValue" x:Key="Name">
+                                          <mva:VisualBasicReference x:TypeArguments="ui:GenericValue" ExpressionText="Name">
+                                            <mva:VisualBasicReference.Result>
+                                              <OutArgument x:TypeArguments="Location(ui:GenericValue)" />
+                                            </mva:VisualBasicReference.Result>
+                                          </mva:VisualBasicReference>
+                                        </OutArgument>
+                                        <OutArgument x:TypeArguments="ui:GenericValue" x:Key="ID">
+                                          <mva:VisualBasicReference x:TypeArguments="ui:GenericValue" ExpressionText="ID">
+                                            <mva:VisualBasicReference.Result>
+                                              <OutArgument x:TypeArguments="Location(ui:GenericValue)" />
+                                            </mva:VisualBasicReference.Result>
+                                          </mva:VisualBasicReference>
+                                        </OutArgument>
+                                        <OutArgument x:TypeArguments="ui:GenericValue" x:Key="title">
+                                          <mva:VisualBasicReference x:TypeArguments="ui:GenericValue" ExpressionText="title">
+                                            <mva:VisualBasicReference.Result>
+                                              <OutArgument x:TypeArguments="Location(ui:GenericValue)" />
+                                            </mva:VisualBasicReference.Result>
+                                          </mva:VisualBasicReference>
+                                        </OutArgument>
+                                        <OutArgument x:TypeArguments="ui:GenericValue" x:Key="cityto">
+                                          <mva:VisualBasicReference x:TypeArguments="ui:GenericValue" ExpressionText="cityto">
+                                            <mva:VisualBasicReference.Result>
+                                              <OutArgument x:TypeArguments="Location(ui:GenericValue)" />
+                                            </mva:VisualBasicReference.Result>
+                                          </mva:VisualBasicReference>
+                                        </OutArgument>
+                                        <OutArgument x:TypeArguments="ui:GenericValue" x:Key="cityfrom">
+                                          <mva:VisualBasicReference x:TypeArguments="ui:GenericValue" ExpressionText="cityfrom">
+                                            <mva:VisualBasicReference.Result>
+                                              <OutArgument x:TypeArguments="Location(ui:GenericValue)" />
+                                            </mva:VisualBasicReference.Result>
+                                          </mva:VisualBasicReference>
+                                        </OutArgument>
+                                        <OutArgument x:TypeArguments="ui:GenericValue" x:Key="mail">
+                                          <mva:VisualBasicReference x:TypeArguments="ui:GenericValue" ExpressionText="mail">
+                                            <mva:VisualBasicReference.Result>
+                                              <OutArgument x:TypeArguments="Location(ui:GenericValue)" />
+                                            </mva:VisualBasicReference.Result>
+                                          </mva:VisualBasicReference>
+                                        </OutArgument>
+                                        <OutArgument x:TypeArguments="ui:GenericValue" x:Key="dayto">
+                                          <mva:VisualBasicReference x:TypeArguments="ui:GenericValue" ExpressionText="dayto">
+                                            <mva:VisualBasicReference.Result>
+                                              <OutArgument x:TypeArguments="Location(ui:GenericValue)" />
+                                            </mva:VisualBasicReference.Result>
+                                          </mva:VisualBasicReference>
+                                        </OutArgument>
+                                        <OutArgument x:TypeArguments="ui:GenericValue" x:Key="dayfrom">
+                                          <mva:VisualBasicReference x:TypeArguments="ui:GenericValue" ExpressionText="dayfrom">
+                                            <mva:VisualBasicReference.Result>
+                                              <OutArgument x:TypeArguments="Location(ui:GenericValue)" />
+                                            </mva:VisualBasicReference.Result>
+                                          </mva:VisualBasicReference>
+                                        </OutArgument>
+                                        <OutArgument x:TypeArguments="ui:GenericValue" x:Key="monthto">
+                                          <mva:VisualBasicReference x:TypeArguments="ui:GenericValue" ExpressionText="monthto">
+                                            <mva:VisualBasicReference.Result>
+                                              <OutArgument x:TypeArguments="Location(ui:GenericValue)" />
+                                            </mva:VisualBasicReference.Result>
+                                          </mva:VisualBasicReference>
+                                        </OutArgument>
+                                        <OutArgument x:TypeArguments="ui:GenericValue" x:Key="monthfrom">
+                                          <mva:VisualBasicReference x:TypeArguments="ui:GenericValue" ExpressionText="monthfrom">
+                                            <mva:VisualBasicReference.Result>
+                                              <OutArgument x:TypeArguments="Location(ui:GenericValue)" />
+                                            </mva:VisualBasicReference.Result>
+                                          </mva:VisualBasicReference>
+                                        </OutArgument>
+                                        <OutArgument x:TypeArguments="ui:GenericValue" x:Key="yearto">
+                                          <mva:VisualBasicReference x:TypeArguments="ui:GenericValue" ExpressionText="yearto">
+                                            <mva:VisualBasicReference.Result>
+                                              <OutArgument x:TypeArguments="Location(ui:GenericValue)" />
+                                            </mva:VisualBasicReference.Result>
+                                          </mva:VisualBasicReference>
+                                        </OutArgument>
+                                        <OutArgument x:TypeArguments="ui:GenericValue" x:Key="yearfrom">
+                                          <mva:VisualBasicReference x:TypeArguments="ui:GenericValue" ExpressionText="yearfrom">
+                                            <mva:VisualBasicReference.Result>
+                                              <OutArgument x:TypeArguments="Location(ui:GenericValue)" />
+                                            </mva:VisualBasicReference.Result>
+                                          </mva:VisualBasicReference>
+                                        </OutArgument>
+                                      </ui:InvokeWorkflowFile.Arguments>
+                                    </ui:InvokeWorkflowFile>
+                                    <If Condition="[ID.ToString = &quot;&quot; Or Name=&quot;&quot;]" sap:VirtualizedContainerService.HintSize="875,750" sap2010:WorkflowViewState.IdRef="If_4">
+                                      <If.Then>
+                                        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_4" Text="[&quot;Empty template&quot;]" />
+                                      </If.Then>
+                                      <If.Else>
+                                        <Sequence DisplayName="Sequence" sap:VirtualizedContainerService.HintSize="496,600" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <ui:MessageBox Buttons="{x:Null}" Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="454,59" sap2010:WorkflowViewState.IdRef="MessageBox_5" Text="[&quot;filled template&quot;+ID+&quot; &quot;+Name+&quot; &quot;+title+&quot; &quot;+mail+&quot; date from &quot;+dayfrom+&quot;/&quot;+monthfrom+&quot;/&quot;+yearfrom+ &quot; Date to &quot;+ dayto+&quot;/&quot;+monthto+&quot;/&quot;+yearto+&quot; from &quot; +cityfrom+&quot; to &quot;+cityto]" TopMost="{x:Null}" />
+                                          <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="454,409" sap2010:WorkflowViewState.IdRef="CommentOut_5">
+                                            <ui:CommentOut.Body>
+                                              <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="418,331" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,239" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                  <ui:SendOutlookMail Account="{x:Null}" AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Body="new travel request please send approval and send travel agencies reply with aproved or not approved" Cc="{x:Null}" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,147" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" IsBodyHtml="False" IsDraft="False" MailMessage="{x:Null}" SentOnBehalfOfName="{x:Null}" Subject="[&quot;Travel Request ID &quot;+RequestID]" TimeoutMS="{x:Null}" To="ayashegazy@gmail.com">
+                                                    <ui:SendOutlookMail.Files>
+                                                      <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
+                                                        <InArgument x:TypeArguments="x:String">
+                                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="curRequestPath">
+                                                            <mva:VisualBasicValue.Result>
+                                                              <OutArgument x:TypeArguments="x:String" />
+                                                            </mva:VisualBasicValue.Result>
+                                                          </mva:VisualBasicValue>
+                                                        </InArgument>
+                                                      </scg:List>
+                                                    </ui:SendOutlookMail.Files>
+                                                  </ui:SendOutlookMail>
+                                                </Sequence>
+                                              </Sequence>
+                                            </ui:CommentOut.Body>
+                                          </ui:CommentOut>
+                                        </Sequence>
+                                      </If.Else>
+                                    </If>
+                                  </Sequence>
+                                </If.Else>
+                              </If>
+                              <Assign sap:VirtualizedContainerService.HintSize="1062,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Int32">[index]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Int32">[index+1]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </Sequence>
+                          </ActivityAction>
+                        </ui:ForEach.Body>
+                      </ui:ForEach>
+                    </Sequence>
+                  </If.Then>
+                </If>
+              </Sequence>
+            </ActivityAction>
+          </ui:ForEach.Body>
+        </ui:ForEach>
+      </Sequence>
+      <FlowStep.Next>
+        <FlowStep x:Name="__ReferenceID1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <av:Point x:Key="ShapeLocation">200,117.5</av:Point>
+              <av:Size x:Key="ShapeSize">200,68</av:Size>
+              <av:PointCollection x:Key="ConnectorLocation">400,150.5 509,150.5 509,266.5</av:PointCollection>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Sequence DisplayName="getEmails" sap:VirtualizedContainerService.HintSize="200,68" sap2010:WorkflowViewState.IdRef="Sequence_9">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:GetOutlookMailMessages Account="{x:Null}" Filter="{x:Null}" TimeoutMS="{x:Null}" DisplayName="Get Outlook Mail Messages" GetAttachements="False" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="GetOutlookMailMessages_2" MailFolder="Inbox" MarkAsRead="True" Messages="[NewMail]" OnlyUnreadMessages="True" Top="30" />
+          </Sequence>
+          <FlowStep.Next>
+            <FlowDecision x:Name="__ReferenceID2" Condition="[NewMail.Any]" DisplayName="check unread emails" sap:VirtualizedContainerService.HintSize="114,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1" True="{x:Reference __ReferenceID0}">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <av:Point x:Key="ShapeLocation">480.5,266.5</av:Point>
+                  <av:Size x:Key="ShapeSize">114,87</av:Size>
+                  <av:PointCollection x:Key="TrueConnector">480.5,310 460,310 460,427</av:PointCollection>
+                  <av:PointCollection x:Key="FalseConnector">594.5,310 620,310 620,125.5 560,125.5 560,95.5</av:PointCollection>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <FlowDecision.False>
+                <FlowStep x:Name="__ReferenceID3">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <av:Point x:Key="ShapeLocation">460,44.5</av:Point>
+                      <av:Size x:Key="ShapeSize">200,52</av:Size>
+                      <av:PointCollection x:Key="ConnectorLocation">460,70 430,70 430,87.5 300,87.5 300,117.5</av:PointCollection>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="no new email" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="LogMessage_1" Message="[&quot;no new email&quot;]">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:LogMessage>
+                  <FlowStep.Next>
+                    <x:Reference>__ReferenceID1</x:Reference>
+                  </FlowStep.Next>
+                </FlowStep>
+              </FlowDecision.False>
+            </FlowDecision>
+          </FlowStep.Next>
+        </FlowStep>
+      </FlowStep.Next>
+    </FlowStep>
+    <x:Reference>__ReferenceID1</x:Reference>
+    <x:Reference>__ReferenceID2</x:Reference>
+    <x:Reference>__ReferenceID3</x:Reference>
+  </Flowchart>
+</Activity>
