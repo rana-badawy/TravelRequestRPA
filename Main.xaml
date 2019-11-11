@@ -109,7 +109,7 @@
                     </sap:WorkflowViewStateService.ViewState>
                     <Transition.Condition>[emailVariable.Subject.Contains("ID")]</Transition.Condition>
                     <Transition.To>
-                      <State x:Name="__ReferenceID2" DisplayName="Check For Agencies" sap:VirtualizedContainerService.HintSize="134,61" sap2010:WorkflowViewState.IdRef="State_3">
+                      <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="Checks if the received mail is from one of the travel agencies" DisplayName="Check For Agencies" sap:VirtualizedContainerService.HintSize="134,133" sap2010:WorkflowViewState.IdRef="State_3">
                         <State.Entry>
                           <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="434,288" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" ReadOnly="True" Visible="False" WorkbookPath="Data\Agencies.xlsx">
                             <ui:ExcelApplicationScope.Body>
@@ -132,22 +132,24 @@
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <av:Point x:Key="ShapeLocation">23,429.5</av:Point>
-                            <av:Size x:Key="ShapeSize">134,61</av:Size>
+                            <av:Size x:Key="ShapeSize">134,133</av:Size>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                         <State.Transitions>
-                          <Transition DisplayName="T1" sap:VirtualizedContainerService.HintSize="589,507" sap2010:WorkflowViewState.IdRef="Transition_4">
+                          <Transition sap2010:Annotation.AnnotationText="Checks if the received mail is an approval mail and sent from one of the travel admins, if so, go to &quot;Send To Agencies&quot; state." DisplayName="T1" sap:VirtualizedContainerService.HintSize="585,547" sap2010:WorkflowViewState.IdRef="Transition_4">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <av:PointCollection x:Key="ConnectorLocation">69.9,490.5 69.9,520.5 49.9,520.5 49.9,679.5</av:PointCollection>
+                                <av:PointCollection x:Key="ConnectorLocation">69.9,562.5 69.9,592.5 49.9,592.5 49.9,679.5</av:PointCollection>
                                 <x:Int32 x:Key="SrcConnectionPointIndex">27</x:Int32>
                                 <x:Int32 x:Key="DestConnectionPointIndex">26</x:Int32>
+                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                             <Transition.Condition>[emailVariable.Sender.Address = TravelAdmin And emailVariable.Body.Contains("Approved")]</Transition.Condition>
                             <Transition.To>
-                              <State x:Name="__ReferenceID4" DisplayName="Send To Agencies" sap:VirtualizedContainerService.HintSize="134,61" sap2010:WorkflowViewState.IdRef="State_5">
+                              <State x:Name="__ReferenceID4" sap2010:Annotation.AnnotationText="Sends emails to travel agencies asking about flights info for the specified travel request" DisplayName="Send To Agencies" sap:VirtualizedContainerService.HintSize="134,163" sap2010:WorkflowViewState.IdRef="State_5">
                                 <State.Entry>
                                   <Sequence sap:VirtualizedContainerService.HintSize="376,1033" sap2010:WorkflowViewState.IdRef="Sequence_6">
                                     <sap:WorkflowViewStateService.ViewState>
@@ -245,15 +247,16 @@
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <av:Point x:Key="ShapeLocation">3,679.5</av:Point>
-                                    <av:Size x:Key="ShapeSize">134,61</av:Size>
+                                    <av:Size x:Key="ShapeSize">134,163</av:Size>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                                 <State.Transitions>
                                   <Transition DisplayName="T4" sap:VirtualizedContainerService.HintSize="450,505" sap2010:WorkflowViewState.IdRef="Transition_7">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <av:PointCollection x:Key="ConnectorLocation">76.7,740.5 76.7,770.5 447,770.5 447,170.85 357,170.85</av:PointCollection>
+                                        <av:PointCollection x:Key="ConnectorLocation">76.7,842.5 76.7,860.85 447,860.85 447,170.85 357,170.85</av:PointCollection>
                                         <x:Int32 x:Key="SrcConnectionPointIndex">43</x:Int32>
                                         <x:Int32 x:Key="DestConnectionPointIndex">24</x:Int32>
                                       </scg:Dictionary>
@@ -266,17 +269,18 @@
                               </State>
                             </Transition.To>
                           </Transition>
-                          <Transition DisplayName="T3" sap:VirtualizedContainerService.HintSize="450,507" sap2010:WorkflowViewState.IdRef="Transition_5">
+                          <Transition sap2010:Annotation.AnnotationText="If the received mail is from one of the travel agencies, go to &quot;Send Offers&quot; state" DisplayName="T3" sap:VirtualizedContainerService.HintSize="450,547" sap2010:WorkflowViewState.IdRef="Transition_5">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <av:PointCollection x:Key="ConnectorLocation">96.7,490.5 96.7,520.5 243.4,520.5 243.4,679.5</av:PointCollection>
+                                <av:PointCollection x:Key="ConnectorLocation">96.7,562.5 96.7,592.5 243.4,592.5 243.4,679.5</av:PointCollection>
                                 <x:Int32 x:Key="SrcConnectionPointIndex">43</x:Int32>
                                 <x:Int32 x:Key="DestConnectionPointIndex">46</x:Int32>
+                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                             <Transition.Condition>[searchResult IsNot Nothing]</Transition.Condition>
                             <Transition.To>
-                              <State x:Name="__ReferenceID5" DisplayName="Send Offers" sap:VirtualizedContainerService.HintSize="134,61" sap2010:WorkflowViewState.IdRef="State_6">
+                              <State x:Name="__ReferenceID5" sap2010:Annotation.AnnotationText="Sends the offers received from travel agencies to the travel admins" DisplayName="Send Offers" sap:VirtualizedContainerService.HintSize="134,133" sap2010:WorkflowViewState.IdRef="State_6">
                                 <State.Entry>
                                   <Sequence sap:VirtualizedContainerService.HintSize="563,746" sap2010:WorkflowViewState.IdRef="Sequence_9">
                                     <sap:WorkflowViewStateService.ViewState>
@@ -330,8 +334,9 @@
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <av:Point x:Key="ShapeLocation">163,679.5</av:Point>
-                                    <av:Size x:Key="ShapeSize">134,61</av:Size>
+                                    <av:Size x:Key="ShapeSize">134,133</av:Size>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                                 <State.Transitions>
@@ -428,7 +433,7 @@
                             </sap:WorkflowViewStateService.ViewState>
                             <Transition.Condition>[emailVariable.Attachments.Any]</Transition.Condition>
                             <Transition.To>
-                              <State x:Name="__ReferenceID7" DisplayName="process template" sap:VirtualizedContainerService.HintSize="837,1755" sap2010:WorkflowViewState.IdRef="State_9">
+                              <State x:Name="__ReferenceID7" DisplayName="process template" sap:VirtualizedContainerService.HintSize="134,61" sap2010:WorkflowViewState.IdRef="State_9">
                                 <State.Entry>
                                   <Sequence sap:VirtualizedContainerService.HintSize="791,1395" sap2010:WorkflowViewState.IdRef="Sequence_22">
                                     <Sequence.Variables>
@@ -536,7 +541,7 @@
                                                           </Assign.Value>
                                                         </Assign>
                                                         <ui:MoveFile ContinueOnError="{x:Null}" Destination="[curRequestPath]" DisplayName="Move File and rename with ID" sap:VirtualizedContainerService.HintSize="797,157" sap2010:WorkflowViewState.IdRef="MoveFile_2" Overwrite="True" Path="[arraypath(index)]" />
-                                                        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="797,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" Timeout="{x:Null}" UnSafe="False" WorkflowFileName="System1\GetRequiredCellsFromTemplate.xaml">
+                                                        <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Workflow File" sap:VirtualizedContainerService.HintSize="797,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="System1\GetRequiredCellsFromTemplate.xaml">
                                                           <ui:InvokeWorkflowFile.Arguments>
                                                             <InArgument x:TypeArguments="x:String" x:Key="curRequestPath">[curRequestPath]</InArgument>
                                                             <OutArgument x:TypeArguments="ui:GenericValue" x:Key="Name">[Name]</OutArgument>
@@ -561,7 +566,7 @@
                                                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                 </scg:Dictionary>
                                                               </sap:WorkflowViewStateService.ViewState>
-                                                              <ui:ReplyToOutlookMailMessage AttachmentsCollection="{x:Null}" Body="[&quot;please fill in all these fields &quot; +&quot;&lt;BR&gt;&quot;+&quot;ID: &quot; + ID +&quot;&lt;BR&gt;&quot;+&quot;Name: &quot;+Name+&quot;&lt;BR&gt;&quot;+&quot;Title: &quot;+title+&quot;&lt;BR&gt;&quot;+&quot;email: &quot;+email+&quot;&lt;BR&gt;&quot;+&quot;City from: &quot;+cityfrom+&quot;&lt;BR&gt;&quot;+&quot;City to: &quot;+cityto+&quot;&lt;BR&gt;&quot;+&quot;Date from: &quot;+dayfrom+&quot;-&quot;+monthfrom+&quot;-&quot;+yearfrom+&quot;&lt;BR&gt;&quot;+&quot;Date to :&quot;+dayto+&quot;-&quot;+monthto+&quot;-&quot;+yearto+&quot;&lt;BR&gt;&quot;]" DisplayName="Reply To Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,117" sap2010:WorkflowViewState.IdRef="ReplyToOutlookMailMessage_5" MailMessage="[emailVariable]" ReplyAll="True" TimeoutMS="{x:Null}">
+                                                              <ui:ReplyToOutlookMailMessage TimeoutMS="{x:Null}" Body="[&quot;please fill in all these fields &quot; +&quot;&lt;BR&gt;&quot;+&quot;ID: &quot; + ID +&quot;&lt;BR&gt;&quot;+&quot;Name: &quot;+Name+&quot;&lt;BR&gt;&quot;+&quot;Title: &quot;+title+&quot;&lt;BR&gt;&quot;+&quot;email: &quot;+email+&quot;&lt;BR&gt;&quot;+&quot;City from: &quot;+cityfrom+&quot;&lt;BR&gt;&quot;+&quot;City to: &quot;+cityto+&quot;&lt;BR&gt;&quot;+&quot;Date from: &quot;+dayfrom+&quot;-&quot;+monthfrom+&quot;-&quot;+yearfrom+&quot;&lt;BR&gt;&quot;+&quot;Date to :&quot;+dayto+&quot;-&quot;+monthto+&quot;-&quot;+yearto+&quot;&lt;BR&gt;&quot;]" DisplayName="Reply To Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,117" sap2010:WorkflowViewState.IdRef="ReplyToOutlookMailMessage_5" MailMessage="[emailVariable]" ReplyAll="True">
                                                                 <ui:ReplyToOutlookMailMessage.Files>
                                                                   <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
                                                                 </ui:ReplyToOutlookMailMessage.Files>
@@ -575,7 +580,7 @@
                                                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                 </scg:Dictionary>
                                                               </sap:WorkflowViewStateService.ViewState>
-                                                              <ui:SendOutlookMail Account="{x:Null}" AttachmentsCollection="{x:Null}" Bcc="{x:Null}" Body="[&quot;Dear Travel Admin,&quot;+ Environment.NewLine +&quot;new travel request please send approval and send travel agencies reply with aproved or rejected&quot;]" Cc="[emailVariable.Sender.Address]" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="SendOutlookMail_4" IsBodyHtml="False" IsDraft="False" MailMessage="{x:Null}" SentOnBehalfOfName="{x:Null}" Subject="[&quot;Travel Request ID : &quot;+RequestID]" TimeoutMS="{x:Null}" To="[TravelAdmin]">
+                                                              <ui:SendOutlookMail Account="{x:Null}" Bcc="{x:Null}" MailMessage="{x:Null}" TimeoutMS="{x:Null}" Body="[&quot;Dear Travel Admin,&quot;+ Environment.NewLine +&quot;new travel request please send approval and send travel agencies reply with aproved or rejected&quot;]" Cc="[emailVariable.Sender.Address]" DisplayName="Send Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="SendOutlookMail_4" IsBodyHtml="False" IsDraft="False" Subject="[&quot;Travel Request ID : &quot;+RequestID]" To="[TravelAdmin]">
                                                                 <ui:SendOutlookMail.Files>
                                                                   <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
                                                                     <InArgument x:TypeArguments="x:String">[curRequestPath]</InArgument>
