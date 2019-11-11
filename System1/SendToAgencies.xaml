@@ -14,7 +14,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>396,631</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>396,673</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>SendToAgencies_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -64,7 +64,7 @@
       <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Sends emails to travel agencies asking about flights info for the specified travel request" DisplayName="SendToAgencies" sap:VirtualizedContainerService.HintSize="376,571" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Sends emails to travel agencies asking about flights info for the specified travel request" DisplayName="SendToAgencies" sap:VirtualizedContainerService.HintSize="376,613" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="cc" />
     </Sequence.Variables>

@@ -115,7 +115,7 @@
                     </sap:WorkflowViewStateService.ViewState>
                     <Transition.Condition>[emailVariable.Subject.Contains("ID")]</Transition.Condition>
                     <Transition.To>
-                      <State x:Name="__ReferenceID2" DisplayName="Check For Agencies" sap:VirtualizedContainerService.HintSize="167,97" sap2010:WorkflowViewState.IdRef="State_3">
+                      <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="Chechs if the recieved mail is from one of the travel agencies" DisplayName="Check For Agencies" sap:VirtualizedContainerService.HintSize="167,154" sap2010:WorkflowViewState.IdRef="State_3">
                         <State.Entry>
                           <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="434,288" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" ReadOnly="True" Visible="False" WorkbookPath="Data\Agencies.xlsx">
                             <ui:ExcelApplicationScope.Body>
@@ -138,24 +138,26 @@
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <av:Point x:Key="ShapeLocation">23,549.5</av:Point>
-                            <av:Size x:Key="ShapeSize">167,97</av:Size>
+                            <av:Size x:Key="ShapeSize">167,154</av:Size>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             <x:Double x:Key="StateContainerWidth">133</x:Double>
                             <x:Double x:Key="StateContainerHeight">61.000000000000057</x:Double>
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                         <State.Transitions>
-                          <Transition DisplayName="T1" sap:VirtualizedContainerService.HintSize="589,507" sap2010:WorkflowViewState.IdRef="Transition_4">
+                          <Transition sap2010:Annotation.AnnotationText="checks if the recieved mail is an approval email and sent from one of the travel admins, if so &quot;send to agencies state&quot;" DisplayName="T1" sap:VirtualizedContainerService.HintSize="589,549" sap2010:WorkflowViewState.IdRef="Transition_4">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <av:PointCollection x:Key="ConnectorLocation">81.45,646.5 81.45,676.5 57.25,676.5 57.25,789.5</av:PointCollection>
+                                <av:PointCollection x:Key="ConnectorLocation">81.45,703.5 81.45,733.5 57.25,733.5 57.25,789.5</av:PointCollection>
                                 <x:Int32 x:Key="SrcConnectionPointIndex">27</x:Int32>
                                 <x:Int32 x:Key="DestConnectionPointIndex">26</x:Int32>
+                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                             <Transition.Condition>[emailVariable.Sender.Address = TravelAdmin And emailVariable.Body.Contains("Approved")]</Transition.Condition>
                             <Transition.To>
-                              <State x:Name="__ReferenceID4" DisplayName="Send To Agencies" sap:VirtualizedContainerService.HintSize="155,85" sap2010:WorkflowViewState.IdRef="State_5">
+                              <State x:Name="__ReferenceID4" sap2010:Annotation.AnnotationText="Sends emails to travel agencies asking about flights info for the specified travel request" DisplayName="Send To Agencies" sap:VirtualizedContainerService.HintSize="155,172" sap2010:WorkflowViewState.IdRef="State_5">
                                 <State.Entry>
                                   <Sequence sap:VirtualizedContainerService.HintSize="376,1033" sap2010:WorkflowViewState.IdRef="Sequence_6">
                                     <sap:WorkflowViewStateService.ViewState>
@@ -253,17 +255,18 @@
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <av:Point x:Key="ShapeLocation">3,789.5</av:Point>
-                                    <av:Size x:Key="ShapeSize">155,85</av:Size>
+                                    <av:Size x:Key="ShapeSize">155,172</av:Size>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                     <x:Double x:Key="StateContainerWidth">121</x:Double>
                                     <x:Double x:Key="StateContainerHeight">49.000000000000114</x:Double>
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                                 <State.Transitions>
                                   <Transition DisplayName="T4" sap:VirtualizedContainerService.HintSize="450,505" sap2010:WorkflowViewState.IdRef="Transition_7">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                        <av:PointCollection x:Key="ConnectorLocation">88.25,874.5 88.25,884.65 467,884.65 467,194.65 407,194.65</av:PointCollection>
+                                        <av:PointCollection x:Key="ConnectorLocation">88.25,961.5 88.25,975 467,975 467,195 407,195</av:PointCollection>
                                         <x:Int32 x:Key="SrcConnectionPointIndex">43</x:Int32>
                                         <x:Int32 x:Key="DestConnectionPointIndex">24</x:Int32>
                                       </scg:Dictionary>
@@ -276,17 +279,18 @@
                               </State>
                             </Transition.To>
                           </Transition>
-                          <Transition DisplayName="T3" sap:VirtualizedContainerService.HintSize="450,507" sap2010:WorkflowViewState.IdRef="Transition_5">
+                          <Transition sap2010:Annotation.AnnotationText="if the recieved mail is from one of the travel agencies, go to &quot;send offers state&quot;" DisplayName="T3" sap:VirtualizedContainerService.HintSize="450,549" sap2010:WorkflowViewState.IdRef="Transition_5">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                <av:PointCollection x:Key="ConnectorLocation">114.85,646.5 114.85,676.5 253.4,676.5 253.4,809.5</av:PointCollection>
+                                <av:PointCollection x:Key="ConnectorLocation">114.85,703.5 114.85,733.5 253.4,733.5 253.4,809.5</av:PointCollection>
                                 <x:Int32 x:Key="SrcConnectionPointIndex">43</x:Int32>
                                 <x:Int32 x:Key="DestConnectionPointIndex">46</x:Int32>
+                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                             <Transition.Condition>[searchResult IsNot Nothing]</Transition.Condition>
                             <Transition.To>
-                              <State x:Name="__ReferenceID5" DisplayName="Send Offers" sap:VirtualizedContainerService.HintSize="134,61" sap2010:WorkflowViewState.IdRef="State_6">
+                              <State x:Name="__ReferenceID5" sap2010:Annotation.AnnotationText="Sends the offers received from travel agencies to the travel admins" DisplayName="Send Offers state" sap:VirtualizedContainerService.HintSize="609,1129" sap2010:WorkflowViewState.IdRef="State_6">
                                 <State.Entry>
                                   <Sequence sap:VirtualizedContainerService.HintSize="563,746" sap2010:WorkflowViewState.IdRef="Sequence_9">
                                     <sap:WorkflowViewStateService.ViewState>
@@ -342,6 +346,7 @@
                                     <av:Point x:Key="ShapeLocation">173,809.5</av:Point>
                                     <av:Size x:Key="ShapeSize">134,61</av:Size>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                                 <State.Transitions>
