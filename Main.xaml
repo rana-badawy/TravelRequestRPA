@@ -1,6 +1,6 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="262,243" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="42">
+    <scg:List x:TypeArguments="x:String" Capacity="22">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -26,7 +26,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="30">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="20">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -94,6 +94,16 @@
             </sap:WorkflowViewStateService.ViewState>
             <Transition.To>
               <State x:Name="__ReferenceID1" DisplayName="Assign Mail Variable" sap:VirtualizedContainerService.HintSize="134,61" sap2010:WorkflowViewState.IdRef="State_2">
+                <State.Entry>
+                  <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_33">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[emailsubject]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[emailVariable.Subject.ToString.ToUpper]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </State.Entry>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <av:Point x:Key="ShapeLocation">233,309.5</av:Point>
@@ -102,7 +112,7 @@
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <State.Transitions>
-                  <Transition DisplayName="Travel Request id " sap:VirtualizedContainerService.HintSize="450,505" sap2010:WorkflowViewState.IdRef="Transition_2">
+                  <Transition DisplayName="Travel Request id " sap:VirtualizedContainerService.HintSize="450,507" sap2010:WorkflowViewState.IdRef="Transition_2">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <av:PointCollection x:Key="ConnectorLocation">279.9,370.5 279.9,400.5 90,400.5 90,429.5</av:PointCollection>
@@ -110,7 +120,13 @@
                         <x:Int32 x:Key="DestConnectionPointIndex">38</x:Int32>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Transition.Condition>[emailVariable.Subject.Contains("ID")]</Transition.Condition>
+                    <Transition.Condition>
+                      <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="emailsubject.Contains(&quot;ID&quot;)">
+                        <mva:VisualBasicValue.Result>
+                          <OutArgument x:TypeArguments="x:Boolean" />
+                        </mva:VisualBasicValue.Result>
+                      </mva:VisualBasicValue>
+                    </Transition.Condition>
                     <Transition.To>
                       <State x:Name="__ReferenceID2" sap2010:Annotation.AnnotationText="Checks if the received mail is from one of the travel agencies or one of the tarvel admins" DisplayName="Check For Agencies" sap:VirtualizedContainerService.HintSize="134,163" sap2010:WorkflowViewState.IdRef="State_3">
                         <State.Entry>
@@ -120,7 +136,7 @@
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <ui:ExcelApplicationScope AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope" EditPassword="{x:Null}" ExistingWorkbook="{x:Null}" sap:VirtualizedContainerService.HintSize="434,288" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_4" Password="{x:Null}" ReadOnly="True" Visible="False" Workbook="{x:Null}" WorkbookPath="Data\Agencies.xlsx">
+                            <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="434,288" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_4" ReadOnly="True" Visible="False" WorkbookPath="Data\Agencies.xlsx">
                               <ui:ExcelApplicationScope.Body>
                                 <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                                   <ActivityAction.Argument>
@@ -143,7 +159,7 @@
                                 </ActivityAction>
                               </ui:ExcelApplicationScope.Body>
                             </ui:ExcelApplicationScope>
-                            <ui:ExcelApplicationScope AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope" EditPassword="{x:Null}" ExistingWorkbook="{x:Null}" sap:VirtualizedContainerService.HintSize="434,288" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" Password="{x:Null}" ReadOnly="True" Visible="False" Workbook="{x:Null}" WorkbookPath="Data\TravelAdmins.xlsx">
+                            <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" CreateNewFile="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="434,288" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_3" ReadOnly="True" Visible="False" WorkbookPath="Data\TravelAdmins.xlsx">
                               <ui:ExcelApplicationScope.Body>
                                 <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                                   <ActivityAction.Argument>
@@ -186,13 +202,7 @@
                                 <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <Transition.Condition>
-                              <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="adminsResult IsNot Nothing And (emailVariable.Body.Contains(&quot;Approved&quot;) Or emailVariable.Body.Contains(&quot;approved&quot;))">
-                                <mva:VisualBasicValue.Result>
-                                  <OutArgument x:TypeArguments="x:Boolean" />
-                                </mva:VisualBasicValue.Result>
-                              </mva:VisualBasicValue>
-                            </Transition.Condition>
+                            <Transition.Condition>[adminsResult IsNot Nothing And (emailVariable.Body.Contains("Approved") Or emailVariable.Body.Contains("approved"))]</Transition.Condition>
                             <Transition.To>
                               <State x:Name="__ReferenceID4" sap2010:Annotation.AnnotationText="Sends emails to travel agencies asking about flights info for the specified travel request" DisplayName="Send To Agencies" sap:VirtualizedContainerService.HintSize="134,163" sap2010:WorkflowViewState.IdRef="State_5">
                                 <State.Entry>
@@ -405,7 +415,7 @@
                       </State>
                     </Transition.To>
                   </Transition>
-                  <Transition DisplayName="travel req only " sap:VirtualizedContainerService.HintSize="450,505" sap2010:WorkflowViewState.IdRef="Transition_3">
+                  <Transition DisplayName="travel req only " sap:VirtualizedContainerService.HintSize="450,507" sap2010:WorkflowViewState.IdRef="Transition_3">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <av:PointCollection x:Key="ConnectorLocation">300,370.5 300,400.5 366.7,400.5 366.7,429.5</av:PointCollection>
@@ -413,7 +423,13 @@
                         <x:Int32 x:Key="DestConnectionPointIndex">42</x:Int32>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Transition.Condition>[emailVariable.Subject.Contains("Travel Request") = True]</Transition.Condition>
+                    <Transition.Condition>
+                      <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="emailsubject.Contains(&quot;TRAVEL REQUEST&quot;) = True">
+                        <mva:VisualBasicValue.Result>
+                          <OutArgument x:TypeArguments="x:Boolean" />
+                        </mva:VisualBasicValue.Result>
+                      </mva:VisualBasicValue>
+                    </Transition.Condition>
                     <Transition.To>
                       <State x:Name="__ReferenceID3" DisplayName="Travel Request" sap:VirtualizedContainerService.HintSize="134,61" sap2010:WorkflowViewState.IdRef="State_4">
                         <sap:WorkflowViewStateService.ViewState>
@@ -684,9 +700,6 @@
                     </Transition.To>
                   </Transition>
                 </State.Transitions>
-                <State.Variables>
-                  <Variable x:TypeArguments="x:String" Name="EmailSubject" />
-                </State.Variables>
               </State>
             </Transition.To>
             <Transition.Action>
@@ -756,6 +769,7 @@
         <Variable x:TypeArguments="snm:MailMessage" Name="emailVariable" />
         <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="offers" />
         <Variable x:TypeArguments="x:String" Name="adminsResult" />
+        <Variable x:TypeArguments="x:String" Name="emailsubject" />
       </StateMachine.Variables>
     </StateMachine>
   </Sequence>
