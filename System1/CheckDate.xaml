@@ -1,12 +1,17 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="CheckDate" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:mvc="clr-namespace:Microsoft.VisualBasic.CompilerServices;assembly=Microsoft.VisualBasic" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="CheckDate" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="dateFrom" Type="InArgument(s:DateTime)" />
-    <x:Property Name="dateTo" Type="InArgument(s:DateTime)" />
+    <x:Property Name="dayfrom" Type="InArgument(ui:GenericValue)" />
+    <x:Property Name="dayto" Type="InArgument(ui:GenericValue)" />
+    <x:Property Name="monthfrom" Type="InArgument(ui:GenericValue)" />
+    <x:Property Name="monthto" Type="InArgument(ui:GenericValue)" />
+    <x:Property Name="yearfrom" Type="InArgument(ui:GenericValue)" />
+    <x:Property Name="yearto" Type="InArgument(ui:GenericValue)" />
+    <x:Property Name="dateIsValid" Type="OutArgument(x:Boolean)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>546,1657</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>546,1655</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>CheckDate_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -61,7 +66,7 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="CheckDate" sap:VirtualizedContainerService.HintSize="526,1597" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="CheckDate" sap:VirtualizedContainerService.HintSize="526,1595" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:Dictionary(ui:GenericValue, ui:GenericValue)" Name="dateD">
         <Variable.Default>
@@ -72,21 +77,24 @@
           </mva:VisualBasicValue>
         </Variable.Default>
       </Variable>
-      <Variable x:TypeArguments="ui:GenericValue" Name="d1" />
-      <Variable x:TypeArguments="ui:GenericValue" Name="d2" />
-      <Variable x:TypeArguments="ui:GenericValue" Name="m1" />
-      <Variable x:TypeArguments="ui:GenericValue" Name="m2" />
-      <Variable x:TypeArguments="ui:GenericValue" Name="y1" />
-      <Variable x:TypeArguments="ui:GenericValue" Name="y2" />
       <Variable x:TypeArguments="x:String" Name="date1" />
       <Variable x:TypeArguments="x:String" Name="date2" />
-      <Variable x:TypeArguments="mvc:DateType" Name="variable1" />
+      <Variable x:TypeArguments="s:DateTime" Name="dateFrom" />
+      <Variable x:TypeArguments="s:DateTime" Name="dateTo" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <Assign sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Boolean">[dateIsValid]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+      </Assign.Value>
+    </Assign>
     <ui:ExcelApplicationScope Password="{x:Null}" AutoSave="False" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="484,755" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" ReadOnly="True" Visible="False" WorkbookPath="Data\TravelRequestTemplate.xlsm">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
@@ -101,32 +109,32 @@
             </sap:WorkflowViewStateService.ViewState>
             <ui:ExcelReadCell Cell="B19" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ExcelReadCell_1" SheetName="Request">
               <ui:ExcelReadCell.Result>
-                <OutArgument x:TypeArguments="ui:GenericValue">[d1]</OutArgument>
+                <OutArgument x:TypeArguments="ui:GenericValue">[dayfrom]</OutArgument>
               </ui:ExcelReadCell.Result>
             </ui:ExcelReadCell>
             <ui:ExcelReadCell Cell="C19" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ExcelReadCell_2" SheetName="Request">
               <ui:ExcelReadCell.Result>
-                <OutArgument x:TypeArguments="ui:GenericValue">[m1]</OutArgument>
+                <OutArgument x:TypeArguments="ui:GenericValue">[monthfrom]</OutArgument>
               </ui:ExcelReadCell.Result>
             </ui:ExcelReadCell>
             <ui:ExcelReadCell Cell="D19" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ExcelReadCell_3" SheetName="Request">
               <ui:ExcelReadCell.Result>
-                <OutArgument x:TypeArguments="ui:GenericValue">[y1]</OutArgument>
+                <OutArgument x:TypeArguments="ui:GenericValue">[yearfrom]</OutArgument>
               </ui:ExcelReadCell.Result>
             </ui:ExcelReadCell>
             <ui:ExcelReadCell Cell="E19" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ExcelReadCell_4" SheetName="Request">
               <ui:ExcelReadCell.Result>
-                <OutArgument x:TypeArguments="ui:GenericValue">[d2]</OutArgument>
+                <OutArgument x:TypeArguments="ui:GenericValue">[dayto]</OutArgument>
               </ui:ExcelReadCell.Result>
             </ui:ExcelReadCell>
             <ui:ExcelReadCell Cell="F19" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ExcelReadCell_5" SheetName="Request">
               <ui:ExcelReadCell.Result>
-                <OutArgument x:TypeArguments="ui:GenericValue">[m2]</OutArgument>
+                <OutArgument x:TypeArguments="ui:GenericValue">[monthto]</OutArgument>
               </ui:ExcelReadCell.Result>
             </ui:ExcelReadCell>
             <ui:ExcelReadCell Cell="G19" DisplayName="Read Cell" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ExcelReadCell_6" SheetName="Request">
               <ui:ExcelReadCell.Result>
-                <OutArgument x:TypeArguments="ui:GenericValue">[y2]</OutArgument>
+                <OutArgument x:TypeArguments="ui:GenericValue">[yearto]</OutArgument>
               </ui:ExcelReadCell.Result>
             </ui:ExcelReadCell>
           </Sequence>
@@ -138,7 +146,7 @@
         <OutArgument x:TypeArguments="x:String">[date1]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[d1.ToString + "/" + dateD(m1).ToString + "/" + y1.ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String">[dayfrom.ToString + "/" + dateD(monthfrom).ToString + "/" + yearfrom.ToString]</InArgument>
       </Assign.Value>
     </Assign>
     <Assign sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_2">
@@ -146,7 +154,7 @@
         <OutArgument x:TypeArguments="x:String">[date2]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="x:String">[d2.ToString + "/" + dateD(m2).ToString + "/" + y2.ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String">[dayto.ToString + "/" + dateD(monthto).ToString + "/" + yearto.ToString]</InArgument>
       </Assign.Value>
     </Assign>
     <Assign sap:VirtualizedContainerService.HintSize="484,60" sap2010:WorkflowViewState.IdRef="Assign_3">
@@ -165,10 +173,16 @@
         <InArgument x:TypeArguments="s:DateTime">[Convert.toDatetime(Datetime.parseexact(date2,"dd/MM/yyyy",System.Globalization.DateTimeFormatInfo.InvariantInfo))]</InArgument>
       </Assign.Value>
     </Assign>
-    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="484,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[dateFrom.ToString + &quot; &quot; + dateTo.ToString]" />
-    <If Condition="[DateTime.Compare(dateFrom, dateTo) &gt; 0]" sap:VirtualizedContainerService.HintSize="484,209" sap2010:WorkflowViewState.IdRef="If_1">
+    <If Condition="[(DateTime.Compare(dateFrom, DateTime.Now) &lt; 0) Or (DateTime.Compare(dateTo, DateTime.Now) &lt; 0) Or (DateTime.Compare(dateFrom, dateTo) &gt; 0)]" sap:VirtualizedContainerService.HintSize="484,208" sap2010:WorkflowViewState.IdRef="If_3">
       <If.Then>
-        <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="230,61" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="Error" TextWriter="{x:Null}" />
+        <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:Boolean">[dateIsValid]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+          </Assign.Value>
+        </Assign>
       </If.Then>
     </If>
   </Sequence>
