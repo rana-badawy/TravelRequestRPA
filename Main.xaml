@@ -195,7 +195,7 @@
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
                         <State.Transitions>
-                          <Transition sap2010:Annotation.AnnotationText="Checks if the received mail is an approval mail and sent from one of the travel admins, if so, go to &quot;Send To Agencies&quot; state." DisplayName="T1" sap:VirtualizedContainerService.HintSize="747,534" sap2010:WorkflowViewState.IdRef="Transition_4">
+                          <Transition sap2010:Annotation.AnnotationText="Checks if the received mail is an approval mail and sent from one of the travel admins, if so, go to &quot;Send To Agencies&quot; state." DisplayName="Travel admin reply" sap:VirtualizedContainerService.HintSize="745,532" sap2010:WorkflowViewState.IdRef="Transition_4">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <av:PointCollection x:Key="ConnectorLocation">80.2,681.5 80.2,711.5 63.55,711.5 63.55,798.5</av:PointCollection>
@@ -330,7 +330,7 @@
                               </State>
                             </Transition.To>
                           </Transition>
-                          <Transition sap2010:Annotation.AnnotationText="If the received mail is from one of the travel agencies, go to &quot;Send Offers&quot; state" DisplayName="T3" sap:VirtualizedContainerService.HintSize="450,549" sap2010:WorkflowViewState.IdRef="Transition_5">
+                          <Transition sap2010:Annotation.AnnotationText="If the received mail is from one of the travel agencies, go to &quot;Send Offers&quot; state" DisplayName="Travel agency reply" sap:VirtualizedContainerService.HintSize="450,547" sap2010:WorkflowViewState.IdRef="Transition_5">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <av:PointCollection x:Key="ConnectorLocation">118.6,681.5 118.6,711.5 331,711.5 331,723.5</av:PointCollection>
@@ -433,7 +433,7 @@
                     </sap:WorkflowViewStateService.ViewState>
                     <Transition.Condition>[emailsubject.Contains("TRAVEL REQUEST") = True]</Transition.Condition>
                     <Transition.To>
-                      <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="bridge" DisplayName="Travel Request" sap:VirtualizedContainerService.HintSize="346,516" sap2010:WorkflowViewState.IdRef="State_4">
+                      <State x:Name="__ReferenceID3" sap2010:Annotation.AnnotationText="bridge" DisplayName="Travel Request" sap:VirtualizedContainerService.HintSize="134,88" sap2010:WorkflowViewState.IdRef="State_4">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <av:Point x:Key="ShapeLocation">273,486</av:Point>
@@ -782,7 +782,7 @@
                       <x:Reference>__ReferenceID0</x:Reference>
                     </Transition.To>
                     <Transition.Action>
-                      <ui:ReplyToOutlookMailMessage AttachmentsCollection="{x:Null}" Body="Please send your travel request with subject [ Travel Request ] and attach the travel template " DisplayName="Reply To Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,117" sap2010:WorkflowViewState.IdRef="ReplyToOutlookMailMessage_9" MailMessage="[emailVariable]" ReplyAll="False" TimeoutMS="{x:Null}">
+                      <ui:ReplyToOutlookMailMessage TimeoutMS="{x:Null}" Body="Please send your travel request with subject [ Travel Request ] and attach the travel template " DisplayName="Reply To Outlook Mail Message" sap:VirtualizedContainerService.HintSize="334,117" sap2010:WorkflowViewState.IdRef="ReplyToOutlookMailMessage_9" MailMessage="[emailVariable]" ReplyAll="False">
                         <ui:ReplyToOutlookMailMessage.Files>
                           <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
                             <InArgument x:TypeArguments="x:String">Data/TravelRequestTemplate.xlsm</InArgument>
@@ -790,13 +790,7 @@
                         </ui:ReplyToOutlookMailMessage.Files>
                       </ui:ReplyToOutlookMailMessage>
                     </Transition.Action>
-                    <Transition.Condition>
-                      <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="emailsubject.Contains(&quot;TRAVEL REQUEST&quot;) = False And emailsubject.Contains(&quot;ID&quot;) = False">
-                        <mva:VisualBasicValue.Result>
-                          <OutArgument x:TypeArguments="x:Boolean" />
-                        </mva:VisualBasicValue.Result>
-                      </mva:VisualBasicValue>
-                    </Transition.Condition>
+                    <Transition.Condition>[emailsubject.Contains("TRAVEL REQUEST") = False And emailsubject.Contains("ID") = False]</Transition.Condition>
                   </Transition>
                 </State.Transitions>
               </State>
