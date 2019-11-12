@@ -500,7 +500,7 @@
                             </sap:WorkflowViewStateService.ViewState>
                             <Transition.Condition>[emailVariable.Attachments.Any]</Transition.Condition>
                             <Transition.To>
-                              <State x:Name="__ReferenceID7" sap2010:Annotation.AnnotationText="reads cells and sends email to travel admin" DisplayName="process template" sap:VirtualizedContainerService.HintSize="160,119" sap2010:WorkflowViewState.IdRef="State_9">
+                              <State x:Name="__ReferenceID7" sap2010:Annotation.AnnotationText="reads cells and sends email to travel admin" DisplayName="process template" sap:VirtualizedContainerService.HintSize="837,1786" sap2010:WorkflowViewState.IdRef="State_9">
                                 <State.Entry>
                                   <Sequence sap:VirtualizedContainerService.HintSize="791,1399" sap2010:WorkflowViewState.IdRef="Sequence_22">
                                     <Sequence.Variables>
